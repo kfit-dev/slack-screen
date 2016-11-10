@@ -1,0 +1,29 @@
+{
+  "repository": {},
+  "license": "MIT",
+  "scripts": {
+    "deploy": "brunch build --production",
+    "watch": "brunch watch --stdin"
+  },
+  "dependencies": {
+    "phoenix": "file:deps/phoenix",
+    "phoenix_html": "file:deps/phoenix_html"
+  },
+  "devDependencies": {
+    "babel-brunch": "~6.0.0",
+    "babel-preset-es2015": "^6.18.0",
+    "brunch": "2.7.4",
+    "clean-css-brunch": "~2.0.0",
+    "css-brunch": "~2.0.0",
+    "javascript-brunch": "~2.0.0",
+    "uglify-js-brunch": "~2.0.1"
+  },
+  "name": "starter_app",
+  "description": "To start your Phoenix app:",
+  "version": "1.0.0",
+  "main": "brunch-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "author": ""
+}

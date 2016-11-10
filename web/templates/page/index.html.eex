@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <h2><%= gettext "Welcome to Channels", name: "Phoenix!" %></h2>
+  <p class="lead">Current status: 
+    <span class="statusText">_</span></p>
+    <button class="btn btn-success actionBtn">ON</button>
+</div>
+
+<div class="row channelLogs">
+  
+  <div class="col-lg-6">
+
+  <ul class="channelIncomingMessages">
+    <li>Messages will display here...</li>
+  </ul>
+
+  </div>
+
+</div>
