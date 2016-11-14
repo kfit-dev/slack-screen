@@ -22,7 +22,7 @@ This is meant to be a general framework to control Browser tabs using the Slack 
 Once the index page is up on Localhost:3666, you can press the on button to connect through web sockets to Phoenix Channels. Now the app is connected with the Javascript client to control browser tabs. Test is out with $ curl command:
 
 ```
-{"message":"Screen change request received from Slack POST."}CTB-MacBook-Pro:elixir ctbmackbook$ curl -H "Content-Type: application/json" -X POST -d '{"token":"example", "channel_id": "C2147483705", "channel_name": "screen-kontrol", "user_id":"U2147483697", "user_name": "adrienshen", "command": "/screen", "text": "url(google.com)", "response_url": "https://hooks.slack.com/commands/1234/5678"}' 127.0.0.1:3666/api/screens
+curl -H "Content-Type: application/json" -X POST -d '{"token":"example", "channel_id": "C2147483705", "channel_name": "screen-kontrol", "user_id":"U2147483697", "user_name": "adrienshen", "command": "/screen", "text": "url(google.com)", "response_url": "https://hooks.slack.com/commands/1234/5678"}' 127.0.0.1:3666/api/screens
 
 ```
 
