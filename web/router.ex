@@ -18,15 +18,15 @@ defmodule StarterApp.Router do
 
     #example post from slack:
     # curl -H "Content-Type: application/json" -X POST -d '{"token":"gIkuvaNzQIHg97ATvDxqgjtO", "team_id":"T0001", "team_domain":"example", "channel_id": "C2147483705", "channel_name": "screen-kontrol", "user_id":"U2147483697", "user_name": "adrienshen", "command": "/screen", "text": "kfit", "response_url": "https://hooks.slack.com/commands/1234/5678"}' 127.0.0.1:3666/api/screens
-    post "/screens", ScreenController, :switch
-    
+    post "/screens", ScreenController, :switchChannel
+
   end
 
   scope "/", StarterApp do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/screens", ScreenController, :index
+    # get "/screens", ScreenController, :index
     # get "/screen/settings", ScreenController, :settings
   end
 
