@@ -8,6 +8,9 @@ BUILD_HOST="screen.kfit.ninja"
 BUILD_USER="deploy"
 BUILD_AT="/home/deploy/screen/build"
 
+STAGING_HOSTS="screen.kfit.ninja"
+STAGING_USER="$BUILD_USER"
+
 PRODUCTION_HOSTS="screen.kfit.ninja"
 PRODUCTION_USER="$BUILD_USER"
 DELIVER_TO="/var/www"

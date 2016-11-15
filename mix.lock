@@ -7,6 +7,7 @@
   "decimal": {:hex, :decimal, "1.1.2", "79a769d4657b2d537b51ef3c02d29ab7141d2b486b516c109642d453ee08e00c", [:mix], []},
   "distillery": {:hex, :distillery, "0.10.1", "14fccade4b8ab849b99e21c4bdfaa1092dbacdce8afd33f5c369c6e114385b0e", [:mix], []},
   "ecto": {:hex, :ecto, "0.15.0", "0f070eca5dc452901379a761004f995f721319a5d431aa9e7b8a8e26b33d3fc1", [:mix], [{:decimal, "~> 1.0", [hex: :decimal, optional: false]}, {:mariaex, "~> 0.4.1", [hex: :mariaex, optional: true]}, {:poison, "~> 1.0", [hex: :poison, optional: true]}, {:poolboy, "~> 1.4", [hex: :poolboy, optional: false]}, {:postgrex, "~> 0.9.1", [hex: :postgrex, optional: true]}, {:sbroker, "~> 0.7", [hex: :sbroker, optional: true]}]},
+  "edeliver": {:hex, :edeliver, "1.4.0", "c1713b3fabfa75d64770a28b715379be6631442b5d288fc92d45e037757dc9c8", [:mix], [{:distillery, ">= 0.8.0", [hex: :distillery, optional: true]}, {:exrm, ">= 0.16.0", [hex: :exrm, optional: true]}]},
   "erlware_commons": {:hex, :erlware_commons, "0.15.0", "99a7aa84b5fdf423c0f2c7907a8443288f991b676cf22abac6f9b5a526ccc189", [:rebar], []},
   "esqlite": {:hex, :esqlite, "0.2.2", "e4e8b39062a075e0bd4756b894dd2aa8edbf94c9081c1fb5c72dc705bf2f2d88", [:make, :rebar], []},
   "exrm": {:hex, :exrm, "0.14.17", "b804614cfc8ded1730ff0d51f059ea2cf7d826eb05fe24d6de87c9e0673decb6", [:mix], [{:conform, "~> 0.11.0", [hex: :conform, optional: false]}]},

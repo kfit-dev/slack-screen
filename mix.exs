@@ -24,11 +24,7 @@ defmodule StarterApp.Mixfile do
       :phoenix_html, 
       :cowboy, 
       :logger, 
-      :gettext,
-      :sqlitex,
-      :esqlite,
-      :pipe,
-      :sqlite_ecto]]
+      :gettext]]
   end
 
   # Specifies which paths to compile per environment.
@@ -43,7 +39,6 @@ defmodule StarterApp.Mixfile do
       {:distillery, ">= 0.8.0", warn_missing: false},
       {:edeliver, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:sqlite_ecto, "~> 0.5.0"},
       {:phoenix_html, "~> 2.6"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
