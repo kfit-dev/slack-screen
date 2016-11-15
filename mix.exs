@@ -25,6 +25,9 @@ defmodule StarterApp.Mixfile do
       :cowboy, 
       :logger, 
       :gettext,
+      :sqlitex,
+      :esqlite,
+      :pipe,
       :sqlite_ecto]]
   end
 
@@ -37,7 +40,8 @@ defmodule StarterApp.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.2.1"},
-      {:distillery, "~> 0.10"},
+      {:distillery, ">= 0.8.0", warn_missing: false},
+      {:edeliver, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.0"},
       {:sqlite_ecto, "~> 0.5.0"},
       {:phoenix_html, "~> 2.6"},
