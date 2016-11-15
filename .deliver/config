@@ -1,0 +1,27 @@
+# .deliver/config
+
+APP="starter_app"
+USING_DISTILLERY=true
+AUTO_VERSION=revision
+
+BUILD_HOST="screen.kfit.ninja"
+BUILD_USER="deploy"
+BUILD_AT="/home/deploy/screen/build"
+
+STAGING_HOSTS="screen.kfit.ninja"
+STAGING_USER="$BUILD_USER"
+
+PRODUCTION_HOSTS="screen.kfit.ninja"
+PRODUCTION_USER="$BUILD_USER"
+DELIVER_TO="/var/www"
+
+# For *Phoenix* projects, symlink prod.secret.exs to our tmp source
+pre_erlang_get_and_update_deps() {
+  local _prod_secret_path="/home/deploy/screen/shared/prod.secret.exs"
+  if [ "$TARGET_MIX_ENV" = "prod" ]; then
+    __sync_remote "
+      ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
+    "
+  fi
+}
+

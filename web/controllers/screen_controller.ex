@@ -39,12 +39,13 @@ defmodule StarterApp.ScreenController do
         # StarterApp.Endpoint.broadcast! "screen:main", "new:screen", %{url: base <> "kfit.com"}
         broadcastScreenMain conn, "kfit.com"
       "fave" ->
-        broadcastScreenMain conn, "myfave.com"
-      "twitter" ->
-        broadcastScreenMain conn, "twitter.com"
-      "ka" ->
-        broadcastScreenMain conn, "khanacademy.org"
-      _ ->
+        broadcastScreenMain conn, "p.datadoghq.com/sb/530ec73ac-6bba62e046"
+      "groupon-id" ->
+        broadcastScreenMain conn, "p.datadoghq.com/sb/530ec73ac-8f31ba151d"
+      "pingdom" ->
+        broadcastScreenMain conn, "stats.pingdom.com/njepara6pq7s"
+     
+       _ ->
         # example: screen url(http://google.com)
         if Regex.match?(~r/url\(/, text) do
           cleanUrl = String.replace_leading(text, "url(", "") |> String.replace_trailing(")", "")

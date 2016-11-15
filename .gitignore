@@ -24,3 +24,5 @@ erl_crash.dump
 /config/prod.secret.exs
 node_modules
 .DS_Store
+.deliver/releases/
+rel/
