@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :starter_app, StarterApp.Endpoint,
-  http: [port: 3666],
+  http: [port: 3777],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -32,6 +32,15 @@ config :logger, :console, format: "[$level] $message\n"
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
+
+config :starter_app, Slack,
+  token: "EXAMPLE_TOKEN",
+  shortcut_urls: [
+    %{short: "fb", url: "facebook.com"},
+    %{short: "ka", url: "khanacademy.org"},
+    %{short: "yt", url: "youtube.com"},
+    %{short: "imgur", url: "imgur.com"}
+  ]
 
 # Configure your database
 # config :starter_app, StarterApp.Repo,

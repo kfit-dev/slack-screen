@@ -1,61 +1,62 @@
 defmodule StarterApp.ScreenController do
   use StarterApp.Web, :controller
-
   alias StarterApp.Screen
 
-  # def show(conn, %{"id" => id}) do
-  #   # screen = Repo.get!(Screen, id)
-  #   render(conn, "screens.html")
-  # end
+  def switch_channel(conn, _params) do
+    token     = _params["token"]
+    user_name = _params["user_name"]
+    command   = _params["command"]
+    text      = _params["text"]
 
-  def switchChannel(conn, %{"token" => token, "team_id" => team_id, "team_domain" => team_domain, "channel_id" => channel_id, "channel_name" => channel_name, "user_id" => user_id, "user_name" => user_name, "command" => command, "text" => text, "response_url" => response_url}) do
-
-    IO.puts "Got the call. The token is : " <> token <> " the user_name is : " <> user_name
-    validateSlackRequest conn, token, channel_name, command, text
+    # Application.get_env(:starter_app, Slack)
+    #   |> IO.inspect
+    IO.puts "Token is : " <> token <> ", The UserName is : " <> user_name
+    validate_slack_request(conn, token, command, text)
   end
 
-  defp validateSlackRequest(conn, token, channel_name, command, text)  do
-    if token == "gIkuvaNzQIHg97ATvDxqgjtO" && channel_name == "screen-kontrol" && command == "/screen" do
-      mapCorrectUrl conn, text
+  defp validate_slack_request(conn, token, command, text)  do
+    config_token = Application.get_env(:starter_app, Slack)[:token]
+
+    if token == config_token && command == "/screen" do
+      map_correct_url conn, text
+
     else
-      IO.puts "Not a valid request, some informations might be wrong."
+      IO.puts "Not a valid request, some information might be wrong."
       json conn, %{message: "Request not accepted. One of %token, %channel_name, %command not supported."}
     end
   end
 
-  defp extractUrlFromString() do
-    
+  defp map_correct_url(conn, text) do
+    config_shortcuts = Application.get_env(:starter_app, Slack)[:shortcut_urls]
+    # IO.inspect config_shortcuts
+
+    if Regex.match?(~r/url\(/, text) do
+      process_url_link conn, text
+    else 
+      Enum.each(config_shortcuts, fn (sc) -> 
+        if text == sc.short do
+          IO.puts "The url is: "<> sc.url
+          broadcast_screen_main conn, sc.url
+        end
+      end)
+    end
+
+    # If not keyword or url(), then:
+    IO.puts "Nothing matched. No valid channels founded."
+    json conn, %{message: "Channel requested is not a valid choice. :" <> text}
   end
 
-  defp broadcastScreenMain(conn, urlString) do
+  defp broadcast_screen_main(conn, urlString) do
     base = "http://"
     StarterApp.Endpoint.broadcast! "screen:main", "new:screen", %{url: base <> urlString}
     json conn, %{message: "Screen change request received from Slack POST."}
   end
 
-  defp mapCorrectUrl(conn, text) do
-    case text do
-      "kfit" ->
-        # StarterApp.Endpoint.broadcast! "screen:main", "new:screen", %{url: base <> "kfit.com"}
-        broadcastScreenMain conn, "kfit.com"
-      "fave" ->
-        broadcastScreenMain conn, "p.datadoghq.com/sb/530ec73ac-6bba62e046"
-      "groupon-id" ->
-        broadcastScreenMain conn, "p.datadoghq.com/sb/530ec73ac-8f31ba151d"
-      "pingdom" ->
-        broadcastScreenMain conn, "stats.pingdom.com/njepara6pq7s"
-     
-       _ ->
-        # example: screen url(http://google.com)
-        if Regex.match?(~r/url\(/, text) do
-          cleanUrl = String.replace_leading(text, "url(", "") |> String.replace_trailing(")", "")
-          IO.puts "Text received is an url. :: " <> cleanUrl
-          broadcastScreenMain conn, cleanUrl
-        else
-          IO.puts "Nothing matched. No valid channels founded."
-          json conn, %{message: "Channel requested is not a valid choice. :" <> text}
-        end
-    end
+  defp process_url_link(conn, text) do
+      clean_url = String.replace_leading(text, "url(", "") 
+        |> String.replace_trailing(")", "")
+      IO.puts "Text received is an url. :: " <> clean_url
+      broadcast_screen_main conn, clean_url
   end
 
 end
