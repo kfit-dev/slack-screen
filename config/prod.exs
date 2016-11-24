@@ -15,6 +15,7 @@ config :starter_app, StarterApp.Endpoint,
   http: [port: 8900],
   root: ".",
   url: [host: "screen.kfit.ninja", port: 80],
+  # url: [host: "127.0.0.1", port: 8900],
   cache_static_manifest: "priv/static/manifest.json",
   server: true
 
