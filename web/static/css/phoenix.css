@@ -25,15 +25,16 @@ form.link, form.button {
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
+  text-align: left;
+  text-align: center;
+  background-color: #808080;
 }
 .logo {
-  width: 519px;
-  height: 71px;
+  width: 240px;
+  height: 70px;
   display: inline-block;
-  margin-bottom: 1em;
   background-image: url("https://dpsv5ztge0cf1.cloudfront.net/assets/kfit-logo-fbd9faa629e2ca7bcf40db073f0eb58d.png");
-  background-color: #999;
-  background-size: 519px 71px;
+  background-color: #808080;
 }
 
 .actionBtn {
