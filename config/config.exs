@@ -26,6 +26,6 @@ config :logger, :console,
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
 
-config :starter_app, StarterApp.Repo,
-  adapter: Sqlite.Ecto,
-  database: "starter_app.sqlite3"
+# config :starter_app, StarterApp.Repo,
+#   adapter: Sqlite.Ecto,
+#   database: "starter_app.sqlite3"

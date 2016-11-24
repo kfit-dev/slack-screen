@@ -34,6 +34,6 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :starter_app, StarterApp.Repo,
-  adapter: Sqlite.Ecto,
-  database: "starter_app.sqlite3"
+# config :starter_app, StarterApp.Repo,
+#   adapter: Sqlite.Ecto,
+#   database: "starter_app.sqlite3"
