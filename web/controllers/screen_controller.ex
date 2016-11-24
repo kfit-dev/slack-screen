@@ -49,7 +49,7 @@ defmodule StarterApp.ScreenController do
   defp broadcast_screen_main(conn, urlString) do
     base = "http://"
     StarterApp.Endpoint.broadcast! "screen:main", "new:screen", %{url: base <> urlString}
-    json conn, %{message: "Screen change request received from Slack POST."}
+    json conn, %{message: "Screen received change request successfully"}
   end
 
   defp process_url_link(conn, text) do

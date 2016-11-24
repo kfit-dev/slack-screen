@@ -1,4 +1,4 @@
-defmodule StarterApp.PageController do
+defmodule StarterApp.HomeController do
   use StarterApp.Web, :controller
 
   def index(conn, _params) do
