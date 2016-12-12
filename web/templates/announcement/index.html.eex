@@ -1,0 +1,10 @@
+
+<section class="announcements">
+	<div class="previous-announcements">
+		<div><%= @announcements.last_two %></div>
+		<div><%= @announcements.last_one %></div>
+	</div>
+	<div class="current-announcement">
+		<%= @announcements.current %>
+	</div>
+</section>

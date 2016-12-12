@@ -26,7 +26,7 @@ defmodule StarterApp.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", HomeController, :index
-
+    get "/announcement", AnnouncementController, :index
     # get "/screens", ScreenController, :index
     # get "/screen/settings", ScreenController, :settings
   end

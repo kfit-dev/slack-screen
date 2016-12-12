@@ -29,6 +29,10 @@ defmodule StarterApp.ScreenController do
   defp map_correct_url(conn, text) do
     config_shortcuts = Application.get_env(:starter_app, Slack)[:shortcut_urls]
     # IO.inspect config_shortcuts
+    
+    if Regex.match?(~r/a\(/, text) do
+      StarterApp.AnnouncementController.write_announcement(conn, clean_string(text))
+    end
 
     if Regex.match?(~r/url\(/, text) do
       process_url_link conn, text
@@ -57,6 +61,13 @@ defmodule StarterApp.ScreenController do
         |> String.replace_trailing(")", "")
       IO.puts "Text received is an url. :: " <> clean_url
       broadcast_screen_main conn, clean_url
+  end
+  
+  defp clean_string(text_cmd) do
+    clean_string = String.replace_leading(text_cmd, "a(", "")
+      |> String.replace_trailing(")", "")
+    
+    clean_string
   end
 
 end
